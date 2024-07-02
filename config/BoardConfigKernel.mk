@@ -96,7 +96,10 @@ else
 endif
 TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(KERNEL_CLANG_VERSION)
 
-ifneq ($(USE_CCACHE),)
+# Ccache
+USE_CCACHE := true
+
+ifeq ($(USE_CCACHE), true)
     ifneq ($(CCACHE_EXEC),)
         # Android 10+ deprecates use of a build ccache. Only system installed ones are now allowed
         CCACHE_BIN := $(CCACHE_EXEC)
